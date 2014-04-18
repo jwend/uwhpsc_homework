@@ -1,0 +1,6 @@
+Code run by Jeff Wendel
+Environment variable UWHPSC is /home/jwendel/uwhpsc
+Environment variable MYHPSC is /home/jwendel/uwhpsc_homework
+Imported numpy ok
+Imported matplotlib ok
+Imported pylab ok
