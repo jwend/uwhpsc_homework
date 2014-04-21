@@ -1,8 +1,8 @@
 
 """
-Demonstration module for quadratic interpolation.
-Python module which coefficients for an n degree polynomial for
-interpolating and plotting a best fit of n points
+Demonstration module for polynomial interpolation.
+Python module which calculated coefficients for an n degree polynomial for
+interpolating and plotting a best fit function for n points
 Modified by: Jeff Wendel
 """
 
