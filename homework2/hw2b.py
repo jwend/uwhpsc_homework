@@ -1,7 +1,8 @@
 
 """
 Demonstration module for quadratic interpolation.
-Update this docstring to describe your code.
+Python module which coefficients for an n degree polynomial for
+interpolating and plotting a best fit of n points
 Modified by: Jeff Wendel
 """
 
