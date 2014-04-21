@@ -297,4 +297,8 @@ if __name__=="__main__":
     # not if the module is imported.
     print "Running test..."
     test_quad1()
+    test_quad2()
+    test_cubic1()
+    test_poly1()
+    test_poly2()
 
