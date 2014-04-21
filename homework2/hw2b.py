@@ -77,7 +77,7 @@ def cubic_interp(xi,yi):
     Cubic interpolation.  Compute the coefficients of the polynomial
     interpolating the points (xi[i],yi[i]) for i = 0,1,2,3.
     Returns c, an array containing the coefficients of
-      p(x) = c[0] + c[1]*x + c[2]*x**2 +c[3]*x to the third
+      p(x) = c[0] + c[1]*x + c[2]*x**2 +c[3]*pow(x,3)
 
     """
 
@@ -86,12 +86,12 @@ def cubic_interp(xi,yi):
     error_message = "xi and yi should have type numpy.ndarray"
     assert (type(xi) is np.ndarray) and (type(yi) is np.ndarray), error_message
 
-    error_message = "xi and yi should have length 3"
-    assert len(xi)==3 and len(yi)==3, error_message
+    error_message = "xi and yi should have length 4"
+    assert len(xi)==4 and len(yi)==4, error_message
 
     # Set up linear system to interpolate through data points:
     ### Fill in this part to compute c ###
-    A = np.vstack([np.ones(3), xi, xi**2]).T
+    A = np.vstack([np.ones(4), xi, xi**2, pow(xi,3)]).T
     
     b = yi
 
@@ -111,15 +111,15 @@ def plot_cubic(xi, yi):
     error_message = "xi and yi should have type numpy.ndarray"
     assert (type(xi) is np.ndarray) and (type(yi) is np.ndarray), error_message
 
-    error_message = "xi and yi should have length 3"
-    assert len(xi)==3 and len(yi)==3, error_message
+    error_message = "xi and yi should have length 4"
+    assert len(xi)==4 and len(yi)==4, error_message
      
-    c = quad_interp(xi,yi)
+    c = cubic_interp(xi,yi)
     
     # Plot the resulting polynomial:
     #x = np.linspace(-2,3,1001)   # points to evaluate polynomial
     x = np.linspace(xi.min() - 1,  xi.max() + 1, 1000)
-    y = c[0] + c[1]*x + c[2]*x**2
+    y = c[0] + c[1]*x + c[2]*x**2 + c[3]*pow(x,3)
 
     plt.figure(1)       # open plot figure window
     plt.clf()           # clear figure
@@ -131,7 +131,7 @@ def plot_cubic(xi, yi):
 
     plt.title("Data points and interpolating polynomial")
 
-    plt.savefig('quadratic.png')   # save figure as .png file
+    plt.savefig('cubic.png')   # save figure as .png file
 
 
 
