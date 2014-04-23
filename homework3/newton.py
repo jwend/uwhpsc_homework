@@ -8,7 +8,7 @@ Modified by: Jeff Wendel
 #import numpy as np
 #import matplotlib.pyplot as plt
 
-def solve(fvals, x0, debug=False):
+def solve2(fvals, x0, debug=False):
 
     from numpy import nan
     x=x0    
@@ -34,6 +34,38 @@ def solve(fvals, x0, debug=False):
     if debug:
         print "After %s iterations, s = %20.15f" % (k+1,s) 
     return s 
+
+
+def solve(fvals, x0, debug=False):
+
+    from numpy import nan
+
+    maxiter = 20
+    tol = 1e-14
+    x = 0.
+    deltax = 0. 
+    fx = 0.
+    fxprime = 0.
+    k = 0
+    
+    x=x0    
+
+    if debug:
+        print "Initial guess: x = ", x
+        
+    s = 1.
+    kmax = 100
+    tol = 1.e-14
+    for k in range(maxiter):
+        fx, fxprime = fvals_sqrt(x)
+        if abs(fx) < tol:
+            break
+        deltax = fx/fxprime
+        x = x - deltax
+
+    return x, k
+    
+
 
 
 def fvals_sqrt(x):
