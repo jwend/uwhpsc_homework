@@ -51,9 +51,8 @@ def solve(fvals, x0, debug=False):
     x=x0    
 
     if debug:
-        print "Initial guess: x = ", x
-        
-    s = 1.
+        print "Initial guess: x = %22.15e" % x0
+
     kmax = 100
     tol = 1.e-14
     for k in range(maxiter):
@@ -62,7 +61,8 @@ def solve(fvals, x0, debug=False):
             break
         deltax = fx/fxprime
         x = x - deltax
-
+        if debug:
+            print "After %i iterations, x = %22.15e" % (k, x)
     return x, k
     
 
