@@ -56,13 +56,13 @@ def solve(fvals, x0, debug=False):
     kmax = 100
     tol = 1.e-14
     for k in range(maxiter):
-        fx, fxprime = fvals_sqrt(x)
+        fx, fxprime = fvals(x)
         if abs(fx) < tol:
             break
         deltax = fx/fxprime
         x = x - deltax
         if debug:
-            print "After %i iterations, x = %22.15e" % (k, x)
+            print "After %i iterations, x = %22.15e" % (k+1, x)
     return x, k
     
 
